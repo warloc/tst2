@@ -28,4 +28,4 @@ jobs:
               - |
                 cd repo
                 chmod +x gradlew
-                ./gradlew clean test build
+                ./gradlew test -i

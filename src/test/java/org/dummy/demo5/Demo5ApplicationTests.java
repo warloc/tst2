@@ -13,7 +13,15 @@ class Demo5ApplicationTests {
 //        s.length();
         try {
             System.out.println("DAS_TEST_wait");
-            Thread.sleep(3*60*1000);
+
+            long j = System.currentTimeMillis() + 5 * 60 * 1000;
+
+
+            while (System.currentTimeMillis() < j) {
+                Thread.sleep(10 * 1000);
+                System.out.println(System.currentTimeMillis()-j);
+            }
+
             System.out.println("DAS_TEST_done");
         } catch (InterruptedException e) {
         }

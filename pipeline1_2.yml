@@ -1,0 +1,32 @@
+resources:
+  - name: repo
+    type: git
+    source:
+      uri: https://github.com/warloc/tst2.git
+#      branch : main
+      username: vadim.merzlikin@gmail.com
+      password: dttH!2022
+jobs:
+  - name: tests
+    plan:
+      - get: repo
+        trigger: true
+      - task: run-gradle-build
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: gradle, tag: jdk25 } # Uses a specific Gradle image
+          inputs:
+            - name: repo
+          caches:
+            - path: $HOME/.gradle/caches/
+            - path: $HOME/.gradle/wrapper/
+          run:
+            path: /bin/sh
+            args:
+              - -ce
+              - |
+                cd repo
+                chmod +x gradlew
+                ./gradlew test -i || true

@@ -32,7 +32,7 @@ jobs:
                   - |
                     cd repo
                     chmod +x gradlew
-                    ./gradlew test -i -Dp.count=12 || true
+                    ./gradlew test -i -Dp_count=12 || true
               params:
                 MY_SECRET_VAR: ((super-secret-value)) # Map pipeline var to task env var
           - task: run-gradle-build2
@@ -53,7 +53,7 @@ jobs:
                   - |
                     cd repo
                     chmod +x gradlew
-                    ./gradlew test -i -Dp.count=11 || true
+                    ./gradlew test -i -Dp_count=$MY_SECRET_VAR || true
               params:
                 MY_SECRET_VAR: ((super-secret-value)) # Map pipeline var to task env var
           - task: run-gradle-build3
@@ -74,6 +74,6 @@ jobs:
                   - |
                     cd repo
                     chmod +x gradlew
-                    ./gradlew test -i -Dp.count=10 || true
+                    ./gradlew test -i -Dp_count=10 || true
               params:
                 MY_SECRET_VAR: ((super-secret-value)) # Map pipeline var to task env var

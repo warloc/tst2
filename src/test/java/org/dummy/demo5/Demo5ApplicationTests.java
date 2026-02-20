@@ -14,7 +14,7 @@ class Demo5ApplicationTests {
         try {
             System.out.println("DAS_TEST_wait");
 
-            String pCount = System.getProperty("p.count");
+            String pCount = System.getProperty("p_count");
             System.out.println("pCount =" +  pCount);
 
             long j = System.currentTimeMillis() + 1 * 60 * 1000;
